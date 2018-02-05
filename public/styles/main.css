@@ -10,7 +10,7 @@ html {
 body {
   margin: 0;
   font-family: "Lato", Arial, Helvetica, sans-serif;
-  background: url("/images/lil_fiber.png");
+  background: url("../images/lil_fiber.png");
   display: flex;
   flex-direction: column;
   height: 100vh;
