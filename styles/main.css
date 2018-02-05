@@ -1,0 +1,169 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+  background: url("/images/lil_fiber.png");
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.l-header {
+  text-align: center;
+  margin: 0 auto;
+  padding: 12px 0 12px;
+  box-shadow: 1px 0 4px -1px #999;
+  background-color: white;
+  width: 100%;
+  position: relative;
+  z-index: 1; /* ensure its drop-shadow stacks above the position:sticky sidebar header */
+}
+
+.l-main {
+  flex: 1;
+  display: flex;
+}
+
+.l-leftpane {
+  flex: 0 0 30%;
+  background-color: #fafafa;
+  border-right: 1px solid #ccc;
+  overflow-y: scroll;
+}
+
+.l-centerpane {
+  flex: 1;
+  padding: 0 0.5rem;
+  overflow-y: scroll;
+}
+
+.page-title {
+  font-family: "Noticia Text", Georgia, serif;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.formatfield {
+  max-width: 600px;
+  padding: 2.5rem 0 4.5rem;
+  margin: 0 auto;
+}
+.formatfield__label {
+  display: block;
+  font-size: 11px;
+  color: #666;
+  padding: 0 0 2px 2px;
+}
+.formatfield__input {
+  width: 100%;
+  font-size: 2.25rem;
+  padding: 3px;
+}
+
+.formatcases__bothcol {
+  display: flex;
+  justify-content: center;
+}
+
+.formatcases__columnlabel {
+  font-size: 18px;
+  color: #666;
+  padding: 0 0 2px 0;
+  text-align: center;
+}
+
+.formatcases__aftertable {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.formatcases__aftertable td {
+  border: 1px solid #ccc;
+  border-left-width: 0;
+  background-color: #e8e8e8;
+  padding: 0 24px;
+  height: 46px;
+  width: 300px;
+  font-size: 30px;
+  white-space: nowrap;
+}
+.formatcases__aftertable span {
+  position: relative;
+  height: 100%;
+}
+
+.formatcases__aftertable span:before {
+  position: absolute;
+  content: "→";
+  left: -40px;
+  color: #888;
+  z-index: 1; /* displays it above table input */
+}
+.formatcases__aftertable span:empty:before {
+  display: none;
+}
+
+.handsontable td {
+  font-size: 30px;
+  line-height: 30px;
+  padding-left: 8px;
+  vertical-align: middle;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+}
+
+.handsontableInput {
+  /* a tiny hack to ensure the text is aligned with the table cell's vertical-align: middle */
+  line-height: 44px;
+}
+
+.sidebar {
+  padding: 0 1rem 2rem;
+  color: #555;
+}
+.sidebar h2 {
+  font-size: 16px;
+  font-weight: bold;
+
+  /* sticky styles */
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  margin: 0;
+  padding: 12px 0 8px;
+  background-color: #fafafa;
+}
+.sidebar h3 {
+  font-size: 14px;
+  border-bottom: 1px solid #ccc;
+}
+.sidebar p {
+  font-size: 14px;
+}
+
+.reftable {
+  border-spacing: 0;
+  border-collapse: collapse;
+  font-size: 14px;
+  width: 100%;
+}
+.reftable th,
+.reftable td {
+  border: 1px solid #ccc;
+  background-color: #f3f3f3;
+  text-align: left;
+  padding: 0 2px;
+}
+.reftable__note {
+  font-weight: normal;
+  font-size: 12px;
+  color: #999;
+}

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Custom Formats Builder</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Noticia+Text:400,400i,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/handsontable/0.35.1/handsontable.full.min.css">
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+  <header class="l-header">
+    <h1 class="page-title">Custom Formats Builder</h1>
+  </header>
+  <main class="l-main">
+    <div class="l-leftpane">
+      <div class="sidebar">
+        <h2>Quick Reference</h2>
+
+        <h3>Placeholders</h3>
+        <table class="reftable">
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>0</td>
+              <td>Display insignificant zeros</td>
+            </tr>
+            <tr>
+              <td>#</td>
+              <td>Display significant digits</td>
+            </tr>
+            <tr>
+              <td>?</td>
+              <td>Display aligned decimals</td>
+            </tr>
+            <tr>
+              <td>.</td>
+              <td>Decimal point</td>
+            </tr>
+            <tr>
+              <td>,</td>
+              <td>Thousands separator</td>
+            </tr>
+            <tr>
+              <td>*</td>
+              <td>Repeat digit</td>
+            </tr>
+            <tr>
+              <td>_</td>
+              <td>Add space</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Fractions and Percents</h3>
+        <table class="reftable">
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>/</td>
+              <td>Fraction Bar</td>
+            </tr>
+            <tr>
+              <td>%</td>
+              <td>Percent Sign</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Dates</h3>
+        <table class="reftable">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Unit</th>
+              <th>Display
+                <span class="reftable__note">(ex: March 8th, 2018)</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>m</td>
+              <td>Month</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>mm</td>
+              <td>Month</td>
+              <td>03</td>
+            </tr>
+            <tr>
+              <td>mmm</td>
+              <td>Month</td>
+              <td>Mar</td>
+            </tr>
+            <tr>
+              <td>mmmm</td>
+              <td>Month</td>
+              <td>March</td>
+            </tr>
+            <tr>
+              <td>mmmmm</td>
+              <td>Month</td>
+              <td>M</td>
+            </tr>
+            <tr>
+              <td>d</td>
+              <td>Day</td>
+              <td>8</td>
+            </tr>
+            <tr>
+              <td>dd</td>
+              <td>Day</td>
+              <td>08</td>
+            </tr>
+            <tr>
+              <td>ddd</td>
+              <td>Day</td>
+              <td>Thu</td>
+            </tr>
+            <tr>
+              <td>dddd</td>
+              <td>Day</td>
+              <td>Thursday</td>
+            </tr>
+            <tr>
+              <td>yy</td>
+              <td>Year</td>
+              <td>18</td>
+            </tr>
+            <tr>
+              <td>yyyy</td>
+              <td>Year</td>
+              <td>2018</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Times:</h3>
+        <table class="reftable">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Unit</th>
+              <th>Display
+                <span class="reftable__note">(ex: 9:05:01 AM)</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>h</td>
+              <td>Hours</td>
+              <td>9</td>
+            </tr>
+            <tr>
+              <td>hh</td>
+              <td>Hours</td>
+              <td>09</td>
+            </tr>
+            <tr>
+              <td>m</td>
+              <td>Minutes</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>mm</td>
+              <td>Minutes</td>
+              <td>05</td>
+            </tr>
+            <tr>
+              <td>s</td>
+              <td>Seconds</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>ss</td>
+              <td>Seconds</td>
+              <td>01</td>
+            </tr>
+            <tr>
+              <td>AM/PM</td>
+              <td>AM or PM</td>
+              <td>AM</td>
+            </tr>
+            <tr>
+              <td>a/p</td>
+              <td>a or p</td>
+              <td>a</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Text</h3>
+        <table class="reftable">
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>/</td>
+              <td>Escape character. Use it before another symbol to display that symbol as text.</td>
+            </tr>
+            <tr>
+              <td>""</td>
+              <td>Quotation marks. Use text in quotation marks to display it literally.</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+    <div class="l-centerpane">
+      <div class="formatfield">
+        <label class="formatfield__label" for="formatfield__input">Format Code</label>
+        <input id="formatfield__input" class="formatfield__input" type="text" value="##.00" />
+      </div>
+      <div class="formatcases">
+        <div class="formatcases__bothcol">
+          <div id="beforecol" class="formatcases__before">
+            <div class="formatcases__columnlabel">Unformatted</div>
+            <div class="formatcases__beforetable"></div>
+          </div>
+          <div id="aftercol" class="formatcases__after">
+            <div class="formatcases__columnlabel">Formatted</div>
+            <table class="formatcases__aftertable">
+              <tbody>
+                <tr>
+                  <td>
+                    <span></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handsontable/0.35.1/handsontable.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ssf@0.10.1/ssf.js"></script>
+  <script src="/scripts/main.js"></script>
+</body>
+
+</html>
