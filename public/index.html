@@ -9,11 +9,13 @@
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Noticia+Text:400,400i,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/handsontable/0.35.1/handsontable.full.min.css">
   <link rel="stylesheet" href="styles/main.css">
+  <script>let CF = {};</script>
 </head>
 
 <body>
   <header class="l-header">
     <h1 class="page-title">Custom Formats Builder</h1>
+    <span class="page-subtitle">for Microsoft Excel and Google Sheets</span>
   </header>
   <main class="l-main">
     <div class="l-leftpane">
@@ -227,6 +229,19 @@
       </div>
     </div>
     <div class="l-centerpane">
+      <div class="presets">
+        <div class="presets__desc">I'm formatting a:</div>
+        <div class="presets__buttons">
+          <button class="preset" id="number-preset">Number</button>
+          <button class="preset" id="lg-number-preset">Large Number</button>
+          <button class="preset" id="fraction-percent-preset">Fraction/Percent</button>
+          <button class="preset" id="currency-preset">Currency</button>
+          <button class="preset" id="date-preset">Date</button>
+          <button class="preset" id="time-preset">Time</button>
+          <!--<button id="other-preset"class="preset">Other</button>-->
+        </div>
+        </ul>
+      </div>
       <div class="formatfield">
         <label class="formatfield__label" for="formatfield__input">Format Code</label>
         <input id="formatfield__input" class="formatfield__input" type="text" value="##.00" />
@@ -286,11 +301,49 @@
           </div>
         </div>
       </div>
+      <footer class="footer">
+        <a href="#" id="what-is-this">What is this?</a> -
+        <a href="#" id="missing-features">Missing Features</a> -
+        <a href="mailto:info@gridmaster.io">Report an Issue</a>
+      </footer>
     </div>
   </main>
+
+  <div class="takeover takeover--hidden" id="what-is-this-takeover">
+    <button class="takeover__close" aria-label="Close info modal">×</button>
+    <div class="takeover__content">
+      <h2>What is this?</h2>
+      <p>This is a scratchpad for building custom formats for Microsoft Excel and Google Sheets.</p>
+      <p>Custom formats are confusing, but super powerful. We wanted to make them easier to create and understand.</p>
+      <p>This tool was built by your friends at
+        <a href="https://gridmaster.io">Gridmaster</a>.</p>
+    </div>
+  </div>
+
+  <div class="takeover takeover--hidden" id="missing-features-takeover">
+    <button class="takeover__close" aria-label="Close info modal">×</button>
+    <div class="takeover__content">
+      <h2>Missing Features</h2>
+      <p>This tool is under developement. Here are some things it's currently missing:</p>
+      <ul>
+        <li>Support for
+          <a href="https://www.ablebits.com/office-addins-blog/2016/07/07/custom-excel-number-format/#Change-font-color">format colors</a>
+        </li>
+        <li>Support for
+          <a href="https://www.ablebits.com/office-addins-blog/2016/07/07/custom-excel-number-format/#Create-conditional-number">format conditions</a>
+        </li>
+      </ul>
+      <p>If you notice any other issues or missing features, please
+        <a href="mailto:info@gridmaster.io">let us know</a>.</p>
+    </div>
+  </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handsontable/0.35.1/handsontable.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/ssf@0.10.1/ssf.js"></script>
+  <script src="scripts/utils.js"></script>
+  <script src="scripts/presets.js"></script>
   <script src="scripts/main.js"></script>
+  <script src="scripts/outline.js"></script>
 </body>
 
 </html>
