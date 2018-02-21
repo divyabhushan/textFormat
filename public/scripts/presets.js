@@ -1,7 +1,10 @@
+// Data for presets and examples.
 CF.presets = {
   "number-preset": {
     formatCode: "##.00",
-    data: [
+    refAnchor: "ref-placeholders",
+    exAnchor: "ex-numbers",
+    cases: [
       ["-10"],
       ["-1"],
       ["0"],
@@ -14,7 +17,9 @@ CF.presets = {
   },
   "lg-number-preset": {
     formatCode: "###,###",
-    data: [
+    refAnchor: "ref-placeholders",
+    exAnchor: "ex-numbers",
+    cases: [
       ["-1000000000"],
       ["-1000000"],
       ["-1000"],
@@ -25,9 +30,11 @@ CF.presets = {
       ["1000000000"]
     ]
   },
-  "fraction-percent-preset": {
-    formatCode: "###/###",
-    data: [
+  "fraction-preset": {
+    formatCode: "##0/##0",
+    refAnchor: "ref-fractions-percents",
+    exAnchor: "ex-fractions",
+    cases: [
       ["-0.1"],
       ["-0.01"],
       ["0"],
@@ -38,9 +45,26 @@ CF.presets = {
       ["1.5"]
     ]
   },
+  "percent-preset": {
+    formatCode: "0.0%",
+    refAnchor: "ref-fractions-percents",
+    exAnchor: "ex-percents",
+    cases: [
+      ["-0.1"],
+      ["-0.01"],
+      ["-0.001"],
+      ["0.001"],
+      ["0.01"],
+      ["0.1"],
+      ["1"],
+      ["1.5"]
+    ]
+  },
   "currency-preset": {
     formatCode: "$#,##0_);$(#,##0)",
-    data: [
+    refAnchor: "ref-placeholders",
+    exAnchor: "ex-currency",
+    cases: [
       ["-10.00"],
       ["-1.00"],
       ["0"],
@@ -53,7 +77,9 @@ CF.presets = {
   },
   "date-preset": {
     formatCode: "mmmm d, yyyy",
-    data: [
+    refAnchor: "ref-dates",
+    exAnchor: "ex-dates",
+    cases: [
       ["24862"],
       ["27852"],
       ["30842"],
@@ -66,7 +92,9 @@ CF.presets = {
   },
   "time-preset": {
     formatCode: "hh:mm:ss AM/PM",
-    data: [
+    refAnchor: "ref-time",
+    exAnchor: "ex-time",
+    cases: [
       ["0.283587963"],
       ["0.377037037"],
       ["0.470486111"],
@@ -75,6 +103,136 @@ CF.presets = {
       ["0.750833333"],
       ["0.844282407"],
       ["0.937731481"]
+    ]
+  },
+  "plus-and-minus-signs-example": {
+    formatCode: "+#,##0;-#,##0;0",
+    cases: [
+      ["-12345"],
+      ["-1234"],
+      ["-123"],
+      ["0"],
+      ["123"],
+      ["1234"],
+      ["12345"],
+      ["123456"]
+    ]
+  },
+  "thousands-only-example": {
+    formatCode: "#,##0,",
+    cases: [
+      ["-123456"],
+      ["-12345"],
+      ["-1234"],
+      ["123"],
+      ["1234"],
+      ["12345"],
+      ["123456"],
+      ["1234567"]
+    ]
+  },
+  "millions-example": {
+    formatCode: '#,##0,," M"',
+    cases: [
+      ["-12345678"],
+      ["-1234567"],
+      ["12345"],
+      ["123456"],
+      ["1234567"],
+      ["12345678"],
+      ["123456789"],
+      ["1234567890"]
+    ]
+  },
+  "hide-zeros-example": {
+    formatCode: "#,##0;-#,##0;",
+    cases: [
+      ["-12345"],
+      ["-1234"],
+      ["-123"],
+      ["0"],
+      ["Some text"],
+      ["1234"],
+      ["12345"],
+      ["123456"]
+    ]
+  },
+  "hide-text-example": {
+    formatCode: "#,##0.0;-#,##0.0;0.0;",
+    cases: [
+      ["-12345"],
+      ["-1234"],
+      ["-123"],
+      ["0"],
+      ["Some text"],
+      ["Some more text"],
+      ["12345"],
+      ["123456"]
+    ]
+  },
+  "space-as-thousands-separator-example": {
+    formatCode: "# ##0",
+    cases: [
+      ["-12345"],
+      ["-1234"],
+      ["-123"],
+      ["0"],
+      ["Some text"],
+      ["1234"],
+      ["12345"],
+      ["123456"]
+    ]
+  },
+  "currency-words-left-example": {
+    formatCode: "[$USD] #,##0;[$USD] -#,##0",
+    cases: [
+      ["-12345"],
+      ["-1234"],
+      ["-123"],
+      ["0"],
+      ["Some text"],
+      ["1234"],
+      ["12345"],
+      ["123456"]
+    ]
+  },
+  "currency-euro-right-example": {
+    formatCode: '#,##0" €"',
+    cases: [
+      ["-12345"],
+      ["-1234"],
+      ["-123"],
+      ["0"],
+      ["Some text"],
+      ["1234"],
+      ["12345"],
+      ["123456"]
+    ]
+  },
+  "single-digit-fractions-example": {
+    formatCode: "0/0",
+    cases: [
+      ["0.01"],
+      ["0.11"],
+      ["0.125"],
+      ["0.24"],
+      ["0.5"],
+      ["0.99"],
+      ["1"],
+      ["1.5"]
+    ]
+  },
+  "percentage-with-thousands-separator-example": {
+    formatCode: "#,##0%",
+    cases: [
+      ["-0.12"],
+      ["0"],
+      ["0.123"],
+      ["1.234"],
+      ["12.34"],
+      ["123.45"],
+      ["1234.56"],
+      ["12345.67"]
     ]
   }
 };

@@ -1,24 +1,20 @@
 CF.main = (function() {
-  // HOT SETUP
+  // WORKSPACE
   var formatsInput = document.querySelector(".formatfield__input");
   var hotContainer = document.querySelector(".formatcases__beforetable");
   var afterColumn = document.querySelector("#aftercol");
   var afterColumnCell = document.querySelector("#aftercol td");
   var allAfterColumnCells = document.querySelectorAll("#aftercol td > span");
-  var presetBtns = document.querySelectorAll(".preset");
-  var whatIsThisLink = document.querySelector("#what-is-this");
-  var missingFeaturesLink = document.querySelector("#missing-features");
-  var takeoverCloseButtons = document.querySelectorAll(".takeover__close");
+
   CF.hotInstance = new Handsontable(hotContainer, {
-    data: CF.presets["number-preset"].data,
+    data: CF.presets["number-preset"].cases,
     width: afterColumn.offsetWidth,
     stretchH: "all",
     rowHeights: afterColumnCell.offsetHeight,
-    maxRows: CF.presets["number-preset"].data.length,
+    maxRows: CF.presets["number-preset"].cases.length,
     maxCols: 1
   });
 
-  // SSF SETUP
   updateAllExamples();
 
   document.onkeyup = function(e) {
@@ -37,40 +33,6 @@ CF.main = (function() {
     }
   };
 
-  window.onresize = CF.utils.throttle(function() {
-    CF.hotInstance.updateSettings({ width: afterColumn.offsetWidth });
-  }, 250);
-
-  for (var i = 0; i < presetBtns.length; i++) {
-    presetBtns[i].addEventListener("click", function(e) {
-      var id = e.target.id;
-      populate(CF.presets[id].formatCode, CF.presets[id].data);
-      updateAllExamples();
-    });
-  }
-
-  for (var i = 0; i < takeoverCloseButtons.length; i++) {
-    takeoverCloseButtons[i].addEventListener("click", closeTakeover);
-  }
-
-  whatIsThisLink.addEventListener("click", openTakeover);
-  missingFeaturesLink.addEventListener("click", openTakeover);
-
-  function openTakeover(e) {
-    var takeoverId = e.target.id + "-takeover";
-    document.getElementById(takeoverId).classList.add("takeover--visible");
-  }
-  function closeTakeover() {
-    document
-      .querySelector(".takeover--visible")
-      .classList.remove("takeover--visible");
-  }
-
-  function populate(formatCode, data) {
-    formatsInput.value = formatCode;
-    CF.hotInstance.updateSettings({ data: data });
-  }
-
   function updateAllExamples() {
     var allBeforeEls = document.querySelectorAll("#beforecol td");
     var allAfterEls = document.querySelectorAll("#aftercol td > span");
@@ -86,19 +48,100 @@ CF.main = (function() {
     if (beforeText.trim() === "") {
       afterEl.innerHTML = "";
     } else {
+      var beforeTextNumber = Number(beforeText);
+
       try {
-        formattedText = SSF.format(formatCode, Number(beforeText));
+        if (isNaN(beforeTextNumber)) {
+          formattedText = SSF.format(formatCode, beforeText);
+        } else {
+          formattedText = SSF.format(formatCode, beforeTextNumber);
+        }
         afterEl.innerHTML = formattedText.trim() === "" ? "" : formattedText;
       } catch (e) {
         afterEl.innerHTML = e;
       }
-      // @todo: figure out when to use this non-number version
-      // try {
-      //   T.innerHTML = SSF.format(F.value, V.value);
-      // } catch (e) {
-      //   T.innerHTML = e;
-      // }
     }
+  }
+
+  // PRESETS & EXAMPLES
+  var presetAndExampleBtns = document.querySelectorAll(".preset, .example");
+  var leftpane = document.querySelector(".l-leftpane");
+  var rightpane = document.querySelector(".l-rightpane");
+  var STICKY_OFFSEST = 53;
+
+  window.onresize = CF.utils.throttle(function() {
+    CF.hotInstance.updateSettings({ width: afterColumn.offsetWidth });
+  }, 250);
+
+  for (var i = 0; i < presetAndExampleBtns.length; i++) {
+    presetAndExampleBtns[i].addEventListener("click", populateApp);
+  }
+
+  function populateApp(event) {
+    var presetData = CF.presets[event.currentTarget.id];
+    var referenceAnchor = document.getElementById(presetData.refAnchor);
+    var exampleAnchor = document.getElementById(presetData.exAnchor);
+
+    if (referenceAnchor) {
+      leftpane.scrollTo(0, referenceAnchor.offsetTop - STICKY_OFFSEST);
+    }
+    if (exampleAnchor) {
+      rightpane.scrollTo(0, exampleAnchor.offsetTop - STICKY_OFFSEST);
+    }
+
+    formatsInput.focus();
+    formatsInput.value = presetData.formatCode;
+    CF.hotInstance.updateSettings({ data: presetData.cases });
+    updateAllExamples();
+  }
+
+  // INFOBOX
+  var infoIconButtons = document.querySelectorAll(".info-icon");
+  var infoboxCloseButton = document.querySelector(".infobox__close");
+  infoboxCloseButton.addEventListener("click", closeInfobox);
+
+  for (var i = 0; i < infoIconButtons.length; i++) {
+    infoIconButtons[i].addEventListener("click", toggleInfobox);
+  }
+
+  function toggleInfobox(e) {
+    var isInfoboxOpen = !!document.querySelector(".infobox--visible");
+    var infoKey = e.target.id.split("info-")[1];
+    var infoContent = CF.info[infoKey];
+
+    if (isInfoboxOpen) {
+      closeInfobox();
+    } else {
+      document.querySelector(".infobox__content").innerHTML = infoContent;
+      document.querySelector(".infobox").classList.add("infobox--visible");
+    }
+  }
+  function closeInfobox() {
+    document
+      .querySelector(".infobox--visible")
+      .classList.remove("infobox--visible");
+  }
+
+  // TAKEOVERS
+  var takeoverCloseButtons = document.querySelectorAll(".takeover__close");
+  var aboutLink = document.querySelector("#about");
+  var missingThingsLink = document.querySelector("#issues");
+
+  aboutLink.addEventListener("click", openTakeover);
+  missingThingsLink.addEventListener("click", openTakeover);
+
+  for (var i = 0; i < takeoverCloseButtons.length; i++) {
+    takeoverCloseButtons[i].addEventListener("click", closeTakeover);
+  }
+
+  function openTakeover(e) {
+    var takeoverId = e.target.id + "-takeover";
+    document.getElementById(takeoverId).classList.add("takeover--visible");
+  }
+  function closeTakeover() {
+    document
+      .querySelector(".takeover--visible")
+      .classList.remove("takeover--visible");
   }
 
   return {

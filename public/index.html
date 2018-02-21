@@ -14,15 +14,38 @@
 
 <body>
   <header class="l-header">
-    <h1 class="page-title">Custom Formats Builder</h1>
-    <span class="page-subtitle">for Microsoft Excel and Google Sheets</span>
+    <div class="header-titles">
+      <h1 class="header-title">Custom Formats Builder</h1>
+      <span class="header-subtitle">for Microsoft Excel
+        <br />and Google Sheets</span>
+    </div>
+    <nav class="header-nav">
+      <a href="#" id="about">About</a>
+      <a href="#" id="issues">Issues</a>
+      <a href="mailto:info@gridmaster.io">Contact</a>
+    </nav>
   </header>
+  <div class="l-header-2">
+    <div class="presets">
+      <div class="presets__desc">I'm formatting a:</div>
+      <div class="presets__buttons">
+        <button class="preset" id="number-preset">Number</button>
+        <button class="preset" id="lg-number-preset">Large Number</button>
+        <button class="preset" id="fraction-preset">Fraction</button>
+        <button class="preset" id="percent-preset">Percent</button>
+        <button class="preset" id="currency-preset">Currency</button>
+        <button class="preset" id="date-preset">Date</button>
+        <button class="preset" id="time-preset">Time</button>
+        <!--<button id="other-preset"class="preset">Other</button>-->
+      </div>
+    </div>
+  </div>
   <main class="l-main">
     <div class="l-leftpane">
       <div class="sidebar">
         <h2>Quick Reference</h2>
 
-        <h3>Placeholders</h3>
+        <h3 id="ref-placeholders">Placeholders</h3>
         <table class="reftable">
           <thead>
             <tr>
@@ -53,7 +76,7 @@
             </tr>
             <tr>
               <td>*</td>
-              <td>Repeat digit</td>
+              <td>Repeat digit to fill cell</td>
             </tr>
             <tr>
               <td>_</td>
@@ -61,7 +84,7 @@
             </tr>
           </tbody>
         </table>
-        <h3>Fractions and Percents</h3>
+        <h3 id="ref-fractions-percents">Fractions and Percents</h3>
         <table class="reftable">
           <thead>
             <tr>
@@ -81,11 +104,11 @@
           </tbody>
         </table>
 
-        <h3>Dates</h3>
+        <h3 id="ref-dates">Dates</h3>
         <table class="reftable">
           <thead>
             <tr>
-              <th>Code</th>
+              <th>Symbol</th>
               <th>Unit</th>
               <th>Display
                 <span class="reftable__note">(ex: March 8th, 2018)</span>
@@ -151,11 +174,11 @@
           </tbody>
         </table>
 
-        <h3>Times:</h3>
+        <h3 id="ref-time">Times:</h3>
         <table class="reftable">
           <thead>
             <tr>
-              <th>Code</th>
+              <th>Symbol</th>
               <th>Unit</th>
               <th>Display
                 <span class="reftable__note">(ex: 9:05:01 AM)</span>
@@ -206,7 +229,7 @@
           </tbody>
         </table>
 
-        <h3>Text</h3>
+        <h3 id="ref-text">Text</h3>
         <table class="reftable">
           <thead>
             <tr>
@@ -229,102 +252,189 @@
       </div>
     </div>
     <div class="l-centerpane">
-      <div class="presets">
-        <div class="presets__desc">I'm formatting a:</div>
-        <div class="presets__buttons">
-          <button class="preset" id="number-preset">Number</button>
-          <button class="preset" id="lg-number-preset">Large Number</button>
-          <button class="preset" id="fraction-percent-preset">Fraction/Percent</button>
-          <button class="preset" id="currency-preset">Currency</button>
-          <button class="preset" id="date-preset">Date</button>
-          <button class="preset" id="time-preset">Time</button>
-          <!--<button id="other-preset"class="preset">Other</button>-->
-        </div>
-        </ul>
-      </div>
-      <div class="formatfield">
-        <label class="formatfield__label" for="formatfield__input">Format Code</label>
-        <input id="formatfield__input" class="formatfield__input" type="text" value="##.00" />
-      </div>
-      <div class="formatcases">
-        <div class="formatcases__bothcol">
-          <div id="beforecol" class="formatcases__before">
-            <div class="formatcases__columnlabel">Unformatted</div>
-            <div class="formatcases__beforetable"></div>
+      <div class="l-centerpane-main">
+        <div class="formatfield">
+          <label class="formatfield__label" for="formatfield__input">Format Code</label>
+          <input id="formatfield__input" class="formatfield__input" type="text" value="##.00" />
+          <div class="formatfield__hint">
+            <div class="formatfield__hintbox">positive</div>
+            <div class="formatfield__hintbox">negative</div>
+            <div class="formatfield__hintbox">zero</div>
+            <div class="formatfield__hintbox">text</div>
+            <button class="info-icon" id="info-formatScope"></button>
           </div>
-          <div id="aftercol" class="formatcases__after">
-            <div class="formatcases__columnlabel">Formatted</div>
-            <table class="formatcases__aftertable">
-              <tbody>
-                <tr>
-                  <td>
-                    <span></span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span></span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span></span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span></span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span></span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span></span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span></span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span></span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+        </div>
+        <div class="formatcases">
+          <div class="formatcases__bothcol">
+            <div id="beforecol" class="formatcases__before">
+              <div class="formatcases__columnlabel">Unformatted</div>
+              <div class="formatcases__beforetable"></div>
+            </div>
+            <div id="aftercol" class="formatcases__after">
+              <div class="formatcases__columnlabel">Formatted</div>
+              <table class="formatcases__aftertable">
+                <tbody>
+                  <tr>
+                    <td>
+                      <span></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span></span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
-      <footer class="footer">
-        <a href="#" id="what-is-this">What is this?</a> -
-        <a href="#" id="missing-features">Missing Features</a> -
-        <a href="mailto:info@gridmaster.io">Report an Issue</a>
-      </footer>
+      <div class="infobox">
+        <button class="infobox__close" aria-label="Close infobox">×</button>
+        <div class="infobox__content">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi natus voluptates odit expedita laudantium quis repudiandae
+          tempora possimus laboriosam enim est quia quaerat aperiam iusto, accusamus maxime at velit quo. Lorem ipsum dolor
+          sit amet consectetur, adipisicing elit.
+        </div>
+      </div>
+    </div>
+    <div class="l-rightpane">
+      <div class="sidebar">
+        <h2>Examples</h2>
+        <h3 id="ex-numbers">Numbers</h3>
+        <button class="example" id="plus-and-minus-signs-example">
+          <div class="example__desc">Plus and minus signs</div>
+          <div class="example__details">
+            <div class="example__code">+#,##0;-#,##0;0</div>
+            <div class="example__example">+12,345</div>
+          </div>
+        </button>
+        <button class="example" id="thousands-only-example">
+          <div class="example__desc">Thousands (only)</div>
+          <div class="example__details">
+            <div class="example__code">#,##0,</div>
+            <div class="example__example">12</div>
+          </div>
+        </button>
+        <button class="example" id="millions-example">
+          <div class="example__desc">Millions</div>
+          <div class="example__details">
+            <div class="example__code">#,##0,," M"</div>
+            <div class="example__example">0 M</div>
+          </div>
+        </button>
+        <button class="example" id="hide-zeros-example">
+          <div class="example__desc">Hide Zeros</div>
+          <div class="example__details">
+            <div class="example__code">#,##0.0;-#,##0.0;</div>
+            <div class="example__example">12,345</div>
+          </div>
+        </button>
+        <button class="example" id="hide-text-example">
+          <div class="example__desc">Hide Text</div>
+          <div class="example__details">
+            <div class="example__code">#,##0.0;-#,##0.0;0.0;</div>
+            <div class="example__example">12,345.6</div>
+          </div>
+        </button>
+        <button class="example" id="space-as-thousands-separator-example">
+          <div class="example__desc">Space as thousands separator</div>
+          <div class="example__details">
+            <div class="example__code"># ##0</div>
+            <div class="example__example">12 345</div>
+          </div>
+        </button>
+        <h3 id="ex-currency">Currency</h3>
+        <button class="example" id="currency-words-left-example">
+          <div class="example__desc">Currency Words Left (USD)</div>
+          <div class="example__details">
+            <div class="example__code">"[$USD] #,##0;[$USD] -#,##0</div>
+            <div class="example__example">USD 12,345</div>
+          </div>
+        </button>
+        <button class="example" id="currency-euro-right-example">
+          <div class="example__desc">Currency Euro Right (€)</div>
+          <div class="example__details">
+            <div class="example__code">"#,##0" €"</div>
+            <div class="example__example">12,345 €</div>
+          </div>
+        </button>
+        <h3 id="ex-fractions">Fractions</h3>
+        <button class="example" id="single-digit-fractions-example">
+          <div class="example__desc">Single Digit Fractions (with rounding)</div>
+          <div class="example__details">
+            <div class="example__code">#/#</div>
+            <div class="example__example">12,345%</div>
+          </div>
+        </button>
+        <h3 id="ex-percents">Percents</h3>
+        <button class="example" id="percentage-with-thousands-separator-example">
+          <div class="example__desc">Percentage with Thousands Separator</div>
+          <div class="example__details">
+            <div class="example__code">#,##0%</div>
+            <div class="example__example">12,345%</div>
+          </div>
+        </button>
+        <!--
+        <h3 id="ex-dates">Dates</h3>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo animi, quidem culpa quibusdam eius nesciunt qui, inventore
+          odit quam molestiae quae quas ad sapiente optio praesentium labore, iste necessitatibus esse.</p>
+        <h3 id="ex-time">Time</h3>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo animi, quidem culpa quibusdam eius nesciunt qui, inventore
+          odit quam molestiae quae quas ad sapiente optio praesentium labore, iste necessitatibus esse.</p>
+        <h3 id="ex-text">Text</h3>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo animi, quidem culpa quibusdam eius nesciunt qui, inventore
+          odit quam molestiae quae quas ad sapiente optio praesentium labore, iste necessitatibus esse.</p>
+        -->
+      </div>
     </div>
   </main>
 
-  <div class="takeover takeover--hidden" id="what-is-this-takeover">
-    <button class="takeover__close" aria-label="Close info modal">×</button>
+  <div class="takeover takeover--hidden" id="about-takeover">
+    <button class="takeover__close" aria-label="Close takeover">×</button>
     <div class="takeover__content">
-      <h2>What is this?</h2>
-      <p>This is a scratchpad for building custom formats for Microsoft Excel and Google Sheets.</p>
-      <p>Custom formats are confusing, but super powerful. We wanted to make them easier to create and understand.</p>
-      <p>This tool was built by your friends at
+      <h2>About</h2>
+      <p>This is a scratchpad for building custom formats for Microsoft Excel and Google Sheets, built by your friends at
         <a href="https://gridmaster.io">Gridmaster</a>.</p>
     </div>
   </div>
 
-  <div class="takeover takeover--hidden" id="missing-features-takeover">
-    <button class="takeover__close" aria-label="Close info modal">×</button>
+  <div class="takeover takeover--hidden" id="issues-takeover">
+    <button class="takeover__close" aria-label="Close takeover">×</button>
     <div class="takeover__content">
-      <h2>Missing Features</h2>
-      <p>This tool is under developement. Here are some things it's currently missing:</p>
+      <h2>Issues</h2>
+      <p>This tool is in beta. Here are some things it's currently missing:</p>
       <ul>
         <li>Support for
           <a href="https://www.ablebits.com/office-addins-blog/2016/07/07/custom-excel-number-format/#Change-font-color">format colors</a>
@@ -332,9 +442,13 @@
         <li>Support for
           <a href="https://www.ablebits.com/office-addins-blog/2016/07/07/custom-excel-number-format/#Create-conditional-number">format conditions</a>
         </li>
+        <li>Support for
+          <a href="https://www.ablebits.com/office-addins-blog/2016/07/07/custom-excel-number-format/#numbers-into-fractions">mixed or unreduced fractions</a>
+        </li>
+        <li>Alignment symbols (like ? and *) don't affect the alignment of the formatted cell.</li>
       </ul>
       <p>If you notice any other issues or missing features, please
-        <a href="mailto:info@gridmaster.io">let us know</a>.</p>
+        <a href="mailto:info@gridmaster.io">report them here</a>.</p>
     </div>
   </div>
 
@@ -342,6 +456,7 @@
   <script src="https://cdn.jsdelivr.net/npm/ssf@0.10.1/ssf.js"></script>
   <script src="scripts/utils.js"></script>
   <script src="scripts/presets.js"></script>
+  <script src="scripts/info.js"></script>
   <script src="scripts/main.js"></script>
   <script src="scripts/outline.js"></script>
 </body>
