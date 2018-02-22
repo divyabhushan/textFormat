@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Custom Formats Builder</title>
+  <link rel="canonical" href="https://customformats.com">
   <link rel="shortcut icon" href="favicon.png">
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Noticia+Text:400,400i,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/handsontable/0.35.1/handsontable.full.min.css">
@@ -198,6 +199,17 @@
               <td>09</td>
             </tr>
             <tr>
+              <td>[h]</td>
+              <td>Elapsed Hours</td>
+              <td>9</td>
+            </tr>
+            <tr>
+              <td>[hh]</td>
+              <td>Elapsed Hours
+                <br/>(w/ leading zero)</td>
+              <td>09</td>
+            </tr>
+            <tr>
               <td>m</td>
               <td>Minutes</td>
               <td>5</td>
@@ -208,6 +220,17 @@
               <td>05</td>
             </tr>
             <tr>
+              <td>[m]</td>
+              <td>Elapsed Minutes</td>
+              <td>545</td>
+            </tr>
+            <tr>
+              <td>[mm]</td>
+              <td>Elapsed Minutes
+                <br/>(w/ leading zero)</td>
+              <td>545</td>
+            </tr>
+            <tr>
               <td>s</td>
               <td>Seconds</td>
               <td>1</td>
@@ -216,6 +239,17 @@
               <td>ss</td>
               <td>Seconds</td>
               <td>01</td>
+            </tr>
+            <tr>
+              <td>[s]</td>
+              <td>Elapsed Seconds</td>
+              <td>32701</td>
+            </tr>
+            <tr>
+              <td>[ss]</td>
+              <td>Elapsed Seconds
+                <br/>w/ leading zero)</td>
+              <td>32701</td>
             </tr>
             <tr>
               <td>AM/PM</td>
@@ -396,7 +430,7 @@
           <div class="example__desc">Single Digit Fractions (with rounding)</div>
           <div class="example__details">
             <div class="example__code">#/#</div>
-            <div class="example__example">12,345%</div>
+            <div class="example__example">1/8</div>
           </div>
         </button>
         <h3 id="ex-percents">Percents</h3>
@@ -407,17 +441,74 @@
             <div class="example__example">12,345%</div>
           </div>
         </button>
-        <!--
         <h3 id="ex-dates">Dates</h3>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo animi, quidem culpa quibusdam eius nesciunt qui, inventore
-          odit quam molestiae quae quas ad sapiente optio praesentium labore, iste necessitatibus esse.</p>
+        <button class="example" id="year-month-day-example">
+          <div class="example__desc">Year Month Day (ISO 8601)</div>
+          <div class="example__details">
+            <div class="example__code">yyyy-mm-dd</div>
+            <div class="example__example">2008-12-30</div>
+          </div>
+        </button>
+        <button class="example" id="day-of-the-week-example">
+          <div class="example__desc">Day of the Week</div>
+          <div class="example__details">
+            <div class="example__code">dddd</div>
+            <div class="example__example">Thursday</div>
+          </div>
+        </button>
+        <button class="example" id="period-separated-date-example">
+          <div class="example__desc">Period Separated Date</div>
+          <div class="example__details">
+            <div class="example__code">mm\.dd\.yyyy</div>
+            <div class="example__example">12.30.2008</div>
+          </div>
+        </button>
+
         <h3 id="ex-time">Time</h3>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo animi, quidem culpa quibusdam eius nesciunt qui, inventore
-          odit quam molestiae quae quas ad sapiente optio praesentium labore, iste necessitatibus esse.</p>
+        <button class="example" id="date-and-time-example">
+          <div class="example__desc">Date and Time</div>
+          <div class="example__details">
+            <div class="example__code">m/d/yyyy h:mm am/pm</div>
+            <div class="example__example">12/30/2008 6:01 PM</div>
+          </div>
+        </button>
+        <button class="example" id="elapsed-time-stopwatch-example">
+          <div class="example__desc">Elapsed Time (stopwatch)</div>
+          <div class="example__details">
+            <div class="example__code">[h]:mm:ss</div>
+            <div class="example__example">15:46:38</div>
+          </div>
+        </button>
         <h3 id="ex-text">Text</h3>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo animi, quidem culpa quibusdam eius nesciunt qui, inventore
-          odit quam molestiae quae quas ad sapiente optio praesentium labore, iste necessitatibus esse.</p>
-        -->
+        <button class="example" id="text-only-prefix-example">
+          <div class="example__desc">Text-only prefix</div>
+          <div class="example__details">
+            <div class="example__code">"Delivered in "@</div>
+            <div class="example__example">Delivered in 4 days</div>
+          </div>
+        </button>
+        <h3 id="ex-other">Other</h3>
+        <button class="example" id="scientific-notation-example">
+          <div class="example__desc">Scientific Notation</div>
+          <div class="example__details">
+            <div class="example__code">#0.0E+0</div>
+            <div class="example__example">123°F</div>
+          </div>
+        </button>
+        <button class="example" id="degrees-farenheit-example">
+          <div class="example__desc">Degrees Farenheit (rounded)</div>
+          <div class="example__details">
+            <div class="example__code">0"°F"</div>
+            <div class="example__example">123°F</div>
+          </div>
+        </button>
+        <button class="example" id="degrees-celsius-example">
+          <div class="example__desc">Degrees Celsius (w/ decimal)</div>
+          <div class="example__details">
+            <div class="example__code">0.0#"°C"</div>
+            <div class="example__example">1.23°C</div>
+          </div>
+        </button>
       </div>
     </div>
   </main>
@@ -426,7 +517,8 @@
     <button class="takeover__close" aria-label="Close takeover">×</button>
     <div class="takeover__content">
       <h2>About</h2>
-      <p>This is a scratchpad for building custom formats for Microsoft Excel and Google Sheets, built by your friends at
+      <p>This is a scratchpad for building custom formats for Microsoft Excel and Google Sheets.</p>
+      <p>It was made by your friends at
         <a href="https://gridmaster.io">Gridmaster</a>.</p>
     </div>
   </div>
@@ -435,7 +527,7 @@
     <button class="takeover__close" aria-label="Close takeover">×</button>
     <div class="takeover__content">
       <h2>Issues</h2>
-      <p>This tool is in beta. Here are some things it's currently missing:</p>
+      <p>The Custom Formats Builder is in beta. Here are some things it's currently missing:</p>
       <ul>
         <li>Support for
           <a href="https://www.ablebits.com/office-addins-blog/2016/07/07/custom-excel-number-format/#Change-font-color">format colors</a>

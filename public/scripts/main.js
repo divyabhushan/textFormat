@@ -135,6 +135,8 @@ CF.main = (function() {
   }
 
   function openTakeover(e) {
+    e.preventDefault();
+
     var takeoverId = e.target.id + "-takeover";
     document.getElementById(takeoverId).classList.add("takeover--visible");
   }
