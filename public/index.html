@@ -2,6 +2,16 @@
 <html lang="en">
 
 <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65103721-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-65103721-2');
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -416,14 +426,14 @@
         <button class="example" id="currency-words-left-example">
           <div class="example__desc">Currency Words Left (USD)</div>
           <div class="example__details">
-            <div class="example__code">"[$USD] #,##0;[$USD] -#,##0</div>
+            <div class="example__code">[$USD] #,##0;[$USD] -#,##0</div>
             <div class="example__example">USD 12,345</div>
           </div>
         </button>
         <button class="example" id="currency-euro-right-example">
           <div class="example__desc">Currency Euro Right (€)</div>
           <div class="example__details">
-            <div class="example__code">"#,##0" €"</div>
+            <div class="example__code">#,##0" €"</div>
             <div class="example__example">12,345 €</div>
           </div>
         </button>
@@ -494,7 +504,7 @@
           <div class="example__desc">Scientific Notation</div>
           <div class="example__details">
             <div class="example__code">#0.0E+0</div>
-            <div class="example__example">123°F</div>
+            <div class="example__example">1.23E+3</div>
           </div>
         </button>
         <button class="example" id="degrees-farenheit-example">
@@ -522,6 +532,8 @@
       <p>This is a scratchpad for building custom formats for Microsoft Excel and Google Sheets.</p>
       <p>It was made by your friends at
         <a href="https://gridmaster.io">Gridmaster</a>.</p>
+      <p>If you like it, we think you will also like
+        <a href="https://gridmaster.io/tips">this</a>.</p>
     </div>
   </div>
 
