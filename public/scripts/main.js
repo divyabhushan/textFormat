@@ -4,7 +4,7 @@ CF.main = (function() {
   var hotContainer = document.querySelector(".formatcases__beforetable");
   var afterColumn = document.querySelector("#aftercol");
   var afterColumnCell = document.querySelector("#aftercol td");
-  var allAfterColumnCells = document.querySelectorAll("#aftercol td > span");
+  var allAfterColumnCells = document.querySelectorAll("#aftercol td > div");
 
   CF.hotInstance = new Handsontable(hotContainer, {
     data: CF.presets["number-preset"].cases,
@@ -35,7 +35,7 @@ CF.main = (function() {
 
   function updateAllExamples() {
     var allBeforeEls = document.querySelectorAll("#beforecol td");
-    var allAfterEls = document.querySelectorAll("#aftercol td > span");
+    var allAfterEls = document.querySelectorAll("#aftercol td > div");
     for (var i = 0; i < allBeforeEls.length; i++) {
       updateOneExample(allBeforeEls[i].textContent, allAfterEls[i]);
     }
