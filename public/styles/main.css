@@ -417,6 +417,9 @@ body {
   font-size: calc(18px + 1.5vw);
   margin: 10px 0;
 }
+.takeover .takeover__small {
+  font-size: calc(10px + 0.75vw);
+}
 .takeover a:link {
   color: #82a2bc;
 }
