@@ -87,15 +87,15 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  /* a slight tint over the texture on the body */
+  background-color: rgba(50, 50, 80, 0.05);
 }
 .l-centerpane-main {
   flex: 1;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
-
-  /* a slight tint over the texture on the body */
-  background-color: rgba(50, 50, 80, 0.05);
 }
 
 .l-rightpane {
@@ -107,6 +107,22 @@ body {
   /* we set this to be a reference point for the left pane contents
      that use offsetTop to anchor their position within the pane */
   position: relative;
+}
+
+.credit {
+  text-align: center;
+  color: #555;
+  padding: 6px 0;
+  font-size: 11px;
+}
+.credit a:link {
+  color: #555;
+}
+.credit a:visited {
+  color: #555;
+}
+.infobox--visible + .credit {
+  display: none;
 }
 
 .presets {
@@ -127,12 +143,15 @@ body {
   margin: 2px 0;
   box-shadow: 0 1px 3px -1px #999;
   cursor: pointer;
+  background-color: #fff;
 }
 .preset:hover {
   background-color: #f5f5f5;
+  color: #000;
 }
 .preset:active {
   background-color: #f5f5f5;
+  color: #000;
   box-shadow: none;
 }
 
@@ -219,14 +238,14 @@ body {
   color: #555;
   padding: 0 8px 0 24px;
   height: 40px;
-  line-height: 40px;
+  line-height: 39px;
   width: 50%;
   font-size: 26px;
   white-space: nowrap;
 }
 .formatcases__aftertable div {
   height: 100%;
-  overflow: auto;
+  overflow-x: auto;
 }
 
 .formatcases__aftertable .arrow {
