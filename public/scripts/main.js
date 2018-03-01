@@ -6,6 +6,8 @@ CF.main = (function() {
   var afterColumnCell = document.querySelector("#aftercol td");
   var allAfterColumnCells = document.querySelectorAll("#aftercol td > div");
 
+  formatsInput.focus();
+  formatsInput.value = CF.presets["number-preset"].formatCode;
   CF.hotInstance = new Handsontable(hotContainer, {
     data: CF.presets["number-preset"].cases,
     width: afterColumn.offsetWidth,
@@ -83,10 +85,10 @@ CF.main = (function() {
     var exampleAnchor = document.getElementById(presetData.exAnchor);
 
     if (referenceAnchor) {
-      leftpane.scrollTo(0, referenceAnchor.offsetTop - STICKY_OFFSEST);
+      leftpane.scrollTop = referenceAnchor.offsetTop - STICKY_OFFSEST;
     }
     if (exampleAnchor) {
-      rightpane.scrollTo(0, exampleAnchor.offsetTop - STICKY_OFFSEST);
+      rightpane.scrollTop = exampleAnchor.offsetTop - STICKY_OFFSEST;
     }
 
     formatsInput.focus();
