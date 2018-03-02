@@ -14,6 +14,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  overflow: hidden;
 }
 
 .l-header {
@@ -67,8 +68,10 @@ body {
 }
 
 .l-main {
-  flex: 1;
+  flex: 1 1 auto;
   display: flex;
+  min-height: 0;
+  height: 100%;
 }
 
 .l-leftpane {
@@ -93,9 +96,17 @@ body {
 }
 .l-centerpane-main {
   flex: 1;
-  overflow-y: scroll;
   display: flex;
   flex-direction: column;
+
+  /**
+   We comment this out to prevent the handsontable from breaking in IE. This is a known issue in HOT,
+   where percentage widths & heights don't work when there's an overflow property in the parents. See:
+   https://github.com/handsontable/handsontable/issues/4141#issuecomment-360429985
+
+   This means things break on chrome for very short screens, but I don't know of a way around that.
+  */
+  /* overflow-y: scroll; */
 }
 
 .l-rightpane {
@@ -229,13 +240,14 @@ body {
 
 .formatcases__aftertable {
   border-spacing: 0;
-  border-collapse: collapse;
+  border-collapse: separate;
   width: 100%;
   table-layout: fixed;
 }
 .formatcases__aftertable td {
   position: relative;
-  border: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
   border-left-width: 0;
   background-color: #e8e8e8;
   color: #555;
@@ -245,6 +257,9 @@ body {
   width: 50%;
   font-size: 26px;
   white-space: nowrap;
+}
+.formatcases__aftertable tr:last-of-type td {
+  border-bottom: 1px solid #ccc;
 }
 .formatcases__aftertable div {
   height: 100%;
@@ -378,6 +393,7 @@ body {
   font-size: 14px;
   border-top: 1px solid #ccc;
   height: 150px;
+  z-index: 1; /* places it above arrows but below modal */
   display: none;
 }
 .infobox__content {

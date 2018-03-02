@@ -71,9 +71,9 @@ CF.main = (function() {
   var rightpane = document.querySelector(".l-rightpane");
   var STICKY_OFFSEST = 53;
 
-  window.onresize = CF.utils.throttle(function() {
+  window.onresize = function() {
     CF.hotInstance.updateSettings({ width: afterColumn.offsetWidth });
-  }, 250);
+  };
 
   for (var i = 0; i < presetAndExampleBtns.length; i++) {
     presetAndExampleBtns[i].addEventListener("click", populateApp);
