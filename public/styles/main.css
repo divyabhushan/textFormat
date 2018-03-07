@@ -314,6 +314,12 @@ body {
 .sidebar p {
   font-size: 14px;
 }
+.sidebar a:link {
+  color: #555;
+}
+.sidebar a:visited {
+  color: #555;
+}
 
 .reftable {
   border-spacing: 0;
