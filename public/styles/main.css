@@ -9,8 +9,8 @@ html {
 
 body {
   margin: 0;
-  font-family: "Lato", Arial, Helvetica, sans-serif;
-  background: url("../images/lil_fiber.png");
+  font-family: 'Lato', Arial, Helvetica, sans-serif;
+  background: url('../images/lil_fiber.png');
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -209,7 +209,7 @@ body {
 }
 
 .formatfield__hintbox:after {
-  content: ";";
+  content: ';';
   display: block;
   position: absolute;
   font-size: 18px;
@@ -281,7 +281,7 @@ body {
   font-size: 26px;
   line-height: 26px;
   vertical-align: middle;
-  font-family: "Lato", Arial, Helvetica, sans-serif;
+  font-family: 'Lato', Arial, Helvetica, sans-serif;
 }
 
 .handsontableInput {
@@ -385,7 +385,7 @@ body {
 .info-icon {
   width: 16px;
   height: 16px;
-  background-image: url("../images/info.svg");
+  background-image: url('../images/info.svg');
   border: none;
   background-color: transparent;
   background-size: 16px 16px;
@@ -459,11 +459,11 @@ body {
   margin: 1.5vw 0;
 }
 .takeover p {
-  font-size: calc(18px + 1.5vw);
+  font-size: calc(14px + 1.5vw);
   line-height: 1.4;
 }
 .takeover li {
-  font-size: calc(18px + 1.5vw);
+  font-size: calc(12px + 1.4vw);
   margin: 10px 0;
 }
 .takeover .takeover__small {
