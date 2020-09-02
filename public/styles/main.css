@@ -120,22 +120,6 @@ body {
   position: relative;
 }
 
-.credit {
-  text-align: center;
-  color: #555;
-  padding: 6px 0;
-  font-size: 11px;
-}
-.credit a:link {
-  color: #555;
-}
-.credit a:visited {
-  color: #555;
-}
-.infobox--visible + .credit {
-  display: none;
-}
-
 .presets {
   padding: 13px;
   display: flex;
