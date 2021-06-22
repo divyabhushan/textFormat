@@ -10,79 +10,21 @@ html {
 body {
   margin: 0;
   font-family: 'Lato', Arial, Helvetica, sans-serif;
-  background: url('../images/lil_fiber.png');
   display: flex;
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
 }
 
-.l-header {
-  margin: 0 auto;
-  padding: 16px 16px 12px;
-  color: white;
-  background-color: #434556;
-  width: 100%;
-}
 .l-header-2 {
   background-color: #cdd1d8;
-}
-
-.header-titles {
-  float: left;
-}
-.header-title {
-  display: inline-block;
-  vertical-align: middle;
-  font-size: 1.575rem;
-  line-height: 1;
-  margin: 0;
-}
-.header-subtitle {
-  display: inline-block;
-  vertical-align: middle;
-  font-size: 11px;
-  padding-left: 12px;
-  line-height: 1.1;
-}
-
-.header-nav {
-  float: right;
-}
-.header-nav a {
-  display: inline-block;
-  padding: 0 6px;
-  text-decoration: none;
-}
-.header-nav a:link {
-  color: white;
-}
-.header-nav a:visited {
-  color: white;
-}
-.header-nav a:hover {
-  color: white;
-}
-.header-nav a:active {
-  color: white;
 }
 
 .l-main {
   flex: 1 1 auto;
   display: flex;
   min-height: 0;
-  height: 100%;
-}
-
-.l-leftpane {
-  flex: 0 0 25%;
-  background-color: #f4f4f4;
-  border-right: 1px solid #ccc;
-  overflow-y: scroll;
-
-  /* we set this to be a reference point for the left pane contents
-     that use offsetTop to anchor their position within the pane */
-  position: relative;
+  height: 50%;
 }
 
 .l-centerpane {
@@ -109,26 +51,15 @@ body {
   /* overflow-y: scroll; */
 }
 
-.l-rightpane {
-  flex: 0 0 25%;
-  background-color: #f4f4f4;
-  border-left: 1px solid #ccc;
-  overflow-y: scroll;
-
-  /* we set this to be a reference point for the left pane contents
-     that use offsetTop to anchor their position within the pane */
-  position: relative;
-}
-
 .presets {
-  padding: 13px;
+  padding: 2px;
   display: flex;
   justify-content: center;
   align-items: baseline;
 }
 .presets__desc {
   font-size: 14px;
-  padding-right: 1rem;
+  padding-right: 0px;
   text-shadow: 0px 1px 1px #eee;
 }
 .preset {
@@ -151,74 +82,40 @@ body {
 }
 
 .formatfield {
-  width: 100%;
+  width: 20%;
   margin: 0 auto;
-  padding-top: 0.625rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-bottom: 2rem;
 }
 
 .formatfield__label {
   display: block;
-  font-size: 11px;
+  font-size: 26px;
   color: #555;
-  padding: 0 0 2px 2px;
+  padding: 0 2px 2px 2px;
 }
 .formatfield__input {
   width: 100%;
   font-size: 2rem;
-  padding: 3px;
-  margin-bottom: 12px;
+  padding: 5px;
 }
 .formatfield__input:focus {
   outline: 2px solid #9999a9;
 }
 
-.formatfield__hint {
-  display: flex;
-  justify-content: center;
-}
-
-.formatfield__hintbox {
-  width: 100px;
-  background: #e6e6e6;
-  border: 1px solid #d2d2d2;
-  color: #999;
-  margin-right: 1rem;
-  padding: 0;
-  position: relative;
-  text-align: center;
-  font-size: 12px;
-}
-
-.formatfield__hintbox:after {
-  content: ';';
-  display: block;
-  position: absolute;
-  font-size: 18px;
-  top: -6px;
-  right: -12px;
-}
-.formatfield__hintbox:last-of-type:after {
-  display: none;
-}
-
 .formatcases {
-  padding: 0 1rem;
+  padding: 1rem;
 }
 .formatcases__bothcol {
   display: flex;
   justify-content: center;
 }
 .formatcases__after {
-  width: 50%;
+  width: 15%;
 }
 
 .formatcases__columnlabel {
   font-size: 18px;
   color: #555;
-  padding: 0 0 2px 0;
+  padding-bottom: 5px;
   text-align: center;
 }
 
@@ -239,7 +136,7 @@ body {
   height: 40px;
   line-height: 39px;
   width: 50%;
-  font-size: 26px;
+  font-size: 14px;
   white-space: nowrap;
 }
 .formatcases__aftertable tr:last-of-type td {
@@ -262,7 +159,7 @@ body {
 }
 
 .handsontable td {
-  font-size: 26px;
+  font-size: 14px;
   line-height: 26px;
   vertical-align: middle;
   font-family: 'Lato', Arial, Helvetica, sans-serif;
@@ -273,139 +170,6 @@ body {
   line-height: 39px;
 }
 
-.sidebar {
-  padding: 0 1rem 2rem;
-  color: #555;
-}
-.sidebar h2 {
-  font-size: 16px;
-  font-weight: bold;
-
-  /* sticky styles */
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  -webkit-margin-before: 0em;
-  -webkit-margin-after: 0em;
-  margin: 0;
-  padding: 12px 0 8px;
-  background-color: #f4f4f4;
-}
-.sidebar h3 {
-  font-size: 14px;
-  border-bottom: 1px solid #ccc;
-}
-.sidebar p {
-  font-size: 14px;
-}
-.sidebar a:link {
-  color: #555;
-}
-.sidebar a:visited {
-  color: #555;
-}
-
-.reftable {
-  border-spacing: 0;
-  border-collapse: collapse;
-  font-size: 14px;
-  width: 100%;
-}
-.reftable th,
-.reftable td {
-  border: 1px solid #ccc;
-  background-color: #fff;
-  text-align: left;
-  padding: 0 2px;
-}
-.reftable__note {
-  font-weight: normal;
-  font-size: 12px;
-  color: #999;
-}
-
-.example {
-  cursor: pointer;
-  border: none;
-  background: white;
-  width: 100%;
-  text-align: left;
-  color: #555;
-  margin: 4px 0;
-  padding: 0;
-  box-shadow: 0 1px 3px -1px #999;
-}
-.example:hover {
-  background: #fffee8;
-}
-.example:active {
-  background-color: #fffee8;
-  color: #555;
-  box-shadow: none;
-}
-.example__desc {
-  margin: 0;
-  font-size: 12px;
-  border-bottom: 1px solid #f5f5f5;
-  padding: 2px 6px;
-  font-style: italic;
-}
-.example__details {
-  display: flex;
-  justify-content: space-between;
-  padding: 2px 6px;
-}
-.example__code {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  margin-right: 4px;
-}
-.example__example {
-  color: #bbb;
-  white-space: nowrap;
-}
-
-.info-icon {
-  width: 16px;
-  height: 16px;
-  background-image: url('../images/info.svg');
-  border: none;
-  background-color: transparent;
-  background-size: 16px 16px;
-  cursor: pointer;
-}
-
-.infobox {
-  position: relative;
-  background: white;
-  color: #555;
-  font-size: 14px;
-  border-top: 1px solid #ccc;
-  height: 150px;
-  z-index: 1; /* places it above arrows but below modal */
-  display: none;
-}
-.infobox__content {
-  padding: 0 1rem;
-  overflow-y: scroll;
-  height: 100%;
-}
-.infobox__close {
-  position: absolute;
-  border: none;
-  background: none;
-  top: 0;
-  right: 0;
-  font-size: 20px;
-  color: #555;
-}
-.infobox__close:hover {
-  cursor: pointer;
-}
-.infobox.infobox--visible {
-  display: block;
-}
 
 .takeover {
   position: absolute;

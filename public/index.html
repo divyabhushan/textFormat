@@ -1,588 +1,147 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
-<head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65103721-2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-65103721-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
 
-    gtag('config', 'UA-65103721-2');
-  </script>
+      gtag('config', 'UA-65103721-2');
+    </script>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="The Custom Formats Builder is an online scratchpad that helps you learn, build, and test custom formats for Microsoft Excel and Google Sheets.">
-  <meta name="keywords" content="Microsoft Excel, Excel, Google Sheets, Custom Formats, Formatting">
-  <title>Custom Formats Builder - Build and test Excel custom formats online</title>
-  <link rel="canonical" href="https://customformats.com">
-  <link rel="shortcut icon" href="favicon.png">
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Noticia+Text:400,400i,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/handsontable/0.35.1/handsontable.full.min.css">
-  <link rel="stylesheet" href="styles/main.css">
-  <script>let CF = {};</script>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+      content="ie=edge">
+    <link rel="canonical"
+      href="https://customformats.com">
+    <link rel="shortcut icon"
+      href="favicon.png">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Noticia+Text:400,400i,700'
+      rel='stylesheet'
+      type='text/css'>
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/handsontable/0.35.1/handsontable.full.min.css">
+    <link rel="stylesheet"
+      href="styles/main.css">
+    <script>let CF = {};</script>
+  </head>
 
-<body>
-  <header class="l-header">
-    <div class="header-titles">
-      <h1 class="header-title">Custom Formats Builder</h1>
-      <span class="header-subtitle">for Microsoft Excel
-        <br />and Google Sheets</span>
-    </div>
-    <nav class="header-nav">
-      <a href="#" id="about">About</a>
-      <a href="#" id="issues">Issues</a>
-    </nav>
-  </header>
-  <div class="l-header-2">
-    <div class="presets">
-      <div class="presets__desc">I'm formatting a:</div>
-      <div class="presets__buttons">
-        <button class="preset" id="number-preset">Number</button>
-        <button class="preset" id="lg-number-preset">Large Number</button>
-        <button class="preset" id="fraction-preset">Fraction</button>
-        <button class="preset" id="percent-preset">Percent</button>
-        <button class="preset" id="currency-preset">Currency</button>
-        <button class="preset" id="date-preset">Date</button>
-        <button class="preset" id="time-preset">Time</button>
-        <!--<button id="other-preset"class="preset">Other</button>-->
-      </div>
-    </div>
-  </div>
-  <main class="l-main">
-    <div class="l-leftpane">
-      <div class="sidebar">
-        <h2>Quick Reference</h2>
-
-        <h3 id="ref-placeholders">Placeholders</h3>
-        <table class="reftable">
-          <thead>
-            <tr>
-              <th>Symbol</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>0</td>
-              <td>Display insignificant zeros</td>
-            </tr>
-            <tr>
-              <td>#</td>
-              <td>Display significant digits</td>
-            </tr>
-            <tr>
-              <td>?</td>
-              <td>Display aligned decimals</td>
-            </tr>
-            <tr>
-              <td>.</td>
-              <td>Decimal point</td>
-            </tr>
-            <tr>
-              <td>,</td>
-              <td>Thousands separator</td>
-            </tr>
-            <tr>
-              <td>*</td>
-              <td>Repeat digit to fill cell</td>
-            </tr>
-            <tr>
-              <td>_</td>
-              <td>Add space</td>
-            </tr>
-          </tbody>
-        </table>
-        <h3 id="ref-fractions-percents">Fractions and Percents</h3>
-        <table class="reftable">
-          <thead>
-            <tr>
-              <th>Symbol</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>/</td>
-              <td>Fraction Bar</td>
-            </tr>
-            <tr>
-              <td>%</td>
-              <td>Percent Sign</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3 id="ref-dates">Dates</h3>
-        <table class="reftable">
-          <thead>
-            <tr>
-              <th>Symbol</th>
-              <th>Unit</th>
-              <th>Display
-                <span class="reftable__note">(ex: March 8th, 2018)</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>m</td>
-              <td>Month</td>
-              <td>3</td>
-            </tr>
-            <tr>
-              <td>mm</td>
-              <td>Month</td>
-              <td>03</td>
-            </tr>
-            <tr>
-              <td>mmm</td>
-              <td>Month</td>
-              <td>Mar</td>
-            </tr>
-            <tr>
-              <td>mmmm</td>
-              <td>Month</td>
-              <td>March</td>
-            </tr>
-            <tr>
-              <td>mmmmm</td>
-              <td>Month</td>
-              <td>M</td>
-            </tr>
-            <tr>
-              <td>d</td>
-              <td>Day</td>
-              <td>8</td>
-            </tr>
-            <tr>
-              <td>dd</td>
-              <td>Day</td>
-              <td>08</td>
-            </tr>
-            <tr>
-              <td>ddd</td>
-              <td>Day</td>
-              <td>Thu</td>
-            </tr>
-            <tr>
-              <td>dddd</td>
-              <td>Day</td>
-              <td>Thursday</td>
-            </tr>
-            <tr>
-              <td>yy</td>
-              <td>Year</td>
-              <td>18</td>
-            </tr>
-            <tr>
-              <td>yyyy</td>
-              <td>Year</td>
-              <td>2018</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3 id="ref-time">Times:</h3>
-        <table class="reftable">
-          <thead>
-            <tr>
-              <th>Symbol</th>
-              <th>Unit</th>
-              <th>Display
-                <span class="reftable__note">(ex: 9:05:01 AM)</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>h</td>
-              <td>Hours</td>
-              <td>9</td>
-            </tr>
-            <tr>
-              <td>hh</td>
-              <td>Hours</td>
-              <td>09</td>
-            </tr>
-            <tr>
-              <td>m</td>
-              <td>Minutes</td>
-              <td>5</td>
-            </tr>
-            <tr>
-              <td>mm</td>
-              <td>Minutes</td>
-              <td>05</td>
-            </tr>
-            <tr>
-              <td>s</td>
-              <td>Seconds</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>ss</td>
-              <td>Seconds</td>
-              <td>01</td>
-            </tr>
-            <tr>
-              <td>[h]</td>
-              <td>Elapsed Hours</td>
-              <td>9</td>
-            </tr>
-            <tr>
-              <td>[hh]</td>
-              <td>Elapsed Hours
-                <br/>(w/ leading zero)</td>
-              <td>09</td>
-            </tr>
-            <tr>
-              <td>[m]</td>
-              <td>Elapsed Minutes</td>
-              <td>545</td>
-            </tr>
-            <tr>
-              <td>[mm]</td>
-              <td>Elapsed Minutes
-                <br/>(w/ leading zero)</td>
-              <td>545</td>
-            </tr>
-            <tr>
-              <td>[s]</td>
-              <td>Elapsed Seconds</td>
-              <td>32701</td>
-            </tr>
-            <tr>
-              <td>[ss]</td>
-              <td>Elapsed Seconds
-                <br/>w/ leading zero)</td>
-              <td>32701</td>
-            </tr>
-            <tr>
-              <td>AM/PM</td>
-              <td>AM or PM</td>
-              <td>AM</td>
-            </tr>
-            <tr>
-              <td>a/p</td>
-              <td>a or p</td>
-              <td>a</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3 id="ref-text">Text</h3>
-        <table class="reftable">
-          <thead>
-            <tr>
-              <th>Symbol</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>\</td>
-              <td>Escape character. Use it before another symbol to display that symbol as text.</td>
-            </tr>
-            <tr>
-              <td>""</td>
-              <td>Quotation marks. Use text in quotation marks to display it literally.</td>
-            </tr>
-          </tbody>
-        </table>
-        <h3 id="ref-other-resources">Other Resources</h3>
-        <p>For a detailed overview, see
-          <a href="https://exceljet.net/custom-number-formats" target="_blank">Exceljet's Custom Number Formats article</a>.</p>
-      </div>
-    </div>
-    <div class="l-centerpane">
-      <div class="l-centerpane-main">
-        <div class="formatfield">
-          <label class="formatfield__label" for="formatfield__input">Format Code</label>
-          <input id="formatfield__input" class="formatfield__input" type="text" value="" />
-          <div class="formatfield__hint">
-            <div class="formatfield__hintbox">positive</div>
-            <div class="formatfield__hintbox">negative</div>
-            <div class="formatfield__hintbox">zero</div>
-            <div class="formatfield__hintbox">text</div>
-            <button class="info-icon" id="info-formatScope"></button>
-          </div>
+  <body>
+    <div class="l-header-2">
+      <div class="presets">
+        <div class="presets__desc">I'm formatting a: </div>
+        <div class="presets__buttons">
+          <button class="preset"
+            id="number-preset">Number</button>
+          <button class="preset"
+            id="lg-number-preset">Large Number</button>
+          <button class="preset"
+            id="fraction-preset">Fraction</button>
+          <button class="preset"
+            id="percent-preset">Percent</button>
+          <button class="preset"
+            id="currency-preset">Currency</button>
+          <button class="preset"
+            id="date-preset">Date</button>
+          <button class="preset"
+            id="time-preset">Time</button>
+          <!--<button id="other-preset"class="preset">Other</button>-->
         </div>
-        <div class="formatcases">
-          <div class="formatcases__bothcol">
-            <div id="beforecol" class="formatcases__before">
-              <div class="formatcases__columnlabel">Unformatted</div>
-              <div class="formatcases__beforetable"></div>
-            </div>
-            <div id="aftercol" class="formatcases__after">
-              <div class="formatcases__columnlabel">Formatted</div>
-              <table class="formatcases__aftertable">
-                <tbody>
-                  <tr>
-                    <td>
-                      <div></div>
-                      <span class="arrow">→</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div></div>
-                      <span class="arrow">→</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div></div>
-                      <span class="arrow">→</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div></div>
-                      <span class="arrow">→</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div></div>
-                      <span class="arrow">→</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div></div>
-                      <span class="arrow">→</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div></div>
-                      <span class="arrow">→</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div></div>
-                      <span class="arrow">→</span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+      </div>
+    </div>
+    <main class="l-main">
+      <div class="l-centerpane">
+        <div class="l-centerpane-main">
+          <div class="formatfield">
+            <label class="formatfield__label"
+              for="formatfield__input">Format Code</label>
+            <input id="formatfield__input"
+              class="formatfield__input"
+              type="text"
+              value="" />
+          </div>
+          <div class="formatcases">
+            <div class="formatcases__bothcol">
+              <div id="beforecol"
+                class="formatcases__before">
+                <div class="formatcases__columnlabel">Unformatted</div>
+                <div class="formatcases__beforetable"></div>
+              </div>
+              <div id="aftercol"
+                class="formatcases__after">
+                <div class="formatcases__columnlabel">Formatted</div>
+                <table class="formatcases__aftertable">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div></div>
+                        <span class="arrow">→</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div></div>
+                        <span class="arrow">→</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div></div>
+                        <span class="arrow">→</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div></div>
+                        <span class="arrow">→</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div></div>
+                        <span class="arrow">→</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div></div>
+                        <span class="arrow">→</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div></div>
+                        <span class="arrow">→</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div></div>
+                        <span class="arrow">→</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="infobox">
-        <button class="infobox__close" aria-label="Close infobox">×</button>
-        <div class="infobox__content">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi natus voluptates odit expedita laudantium quis repudiandae
-          tempora possimus laboriosam enim est quia quaerat aperiam iusto, accusamus maxime at velit quo. Lorem ipsum dolor
-          sit amet consectetur, adipisicing elit.
-        </div>
-      </div>
-    </div>
-    <div class="l-rightpane">
-      <div class="sidebar">
-        <h2>Examples</h2>
-        <h3 id="ex-numbers">Numbers</h3>
-        <button class="example" id="plus-and-minus-signs-example">
-          <div class="example__desc">Plus and minus signs</div>
-          <div class="example__details">
-            <div class="example__code">+#,##0;-#,##0;0</div>
-            <div class="example__example">+12,345</div>
-          </div>
-        </button>
-        <button class="example" id="thousands-only-example">
-          <div class="example__desc">Thousands (only)</div>
-          <div class="example__details">
-            <div class="example__code">#,##0,</div>
-            <div class="example__example">12</div>
-          </div>
-        </button>
-        <button class="example" id="millions-example">
-          <div class="example__desc">Millions</div>
-          <div class="example__details">
-            <div class="example__code">#,##0,," M"</div>
-            <div class="example__example">0 M</div>
-          </div>
-        </button>
-        <button class="example" id="hide-zeros-example">
-          <div class="example__desc">Hide Zeros</div>
-          <div class="example__details">
-            <div class="example__code">#,##0.0;-#,##0.0;</div>
-            <div class="example__example">12,345</div>
-          </div>
-        </button>
-        <button class="example" id="hide-text-example">
-          <div class="example__desc">Hide Text</div>
-          <div class="example__details">
-            <div class="example__code">#,##0.0;-#,##0.0;0.0;</div>
-            <div class="example__example">12,345.6</div>
-          </div>
-        </button>
-        <button class="example" id="space-as-thousands-separator-example">
-          <div class="example__desc">Space as thousands separator</div>
-          <div class="example__details">
-            <div class="example__code"># ##0</div>
-            <div class="example__example">12 345</div>
-          </div>
-        </button>
-        <h3 id="ex-currency">Currency</h3>
-        <button class="example" id="currency-parens-example">
-          <div class="example__desc">US Currency (negatives in parentheses)</div>
-          <div class="example__details">
-            <div class="example__code">$#,##0_);$(#,##0)</div>
-            <div class="example__example">$(12,345)</div>
-          </div>
-        </button>
-        <button class="example" id="currency-words-left-example">
-          <div class="example__desc">Currency Words Left (USD)</div>
-          <div class="example__details">
-            <div class="example__code">[$USD] #,##0;[$USD] -#,##0</div>
-            <div class="example__example">USD 12,345</div>
-          </div>
-        </button>
-        <button class="example" id="currency-euro-right-example">
-          <div class="example__desc">Currency Euro Right (€)</div>
-          <div class="example__details">
-            <div class="example__code">#,##0" €"</div>
-            <div class="example__example">12,345 €</div>
-          </div>
-        </button>
-        <h3 id="ex-fractions">Fractions</h3>
-        <button class="example" id="single-digit-fractions-example">
-          <div class="example__desc">Single Digit Fractions (with rounding)</div>
-          <div class="example__details">
-            <div class="example__code">#/#</div>
-            <div class="example__example">1/8</div>
-          </div>
-        </button>
-        <h3 id="ex-percents">Percents</h3>
-        <button class="example" id="percentage-with-thousands-separator-example">
-          <div class="example__desc">Percentage with Thousands Separator</div>
-          <div class="example__details">
-            <div class="example__code">#,##0%</div>
-            <div class="example__example">12,345%</div>
-          </div>
-        </button>
-        <h3 id="ex-dates">Dates</h3>
-        <button class="example" id="year-month-day-example">
-          <div class="example__desc">Year Month Day (ISO 8601)</div>
-          <div class="example__details">
-            <div class="example__code">yyyy-mm-dd</div>
-            <div class="example__example">2008-12-30</div>
-          </div>
-        </button>
-        <button class="example" id="day-of-the-week-example">
-          <div class="example__desc">Day of the Week</div>
-          <div class="example__details">
-            <div class="example__code">dddd</div>
-            <div class="example__example">Thursday</div>
-          </div>
-        </button>
-        <button class="example" id="period-separated-date-example">
-          <div class="example__desc">Period Separated Date</div>
-          <div class="example__details">
-            <div class="example__code">mm\.dd\.yyyy</div>
-            <div class="example__example">12.30.2008</div>
-          </div>
-        </button>
+    </main>
 
-        <h3 id="ex-time">Time</h3>
-        <button class="example" id="date-and-time-example">
-          <div class="example__desc">Date and Time</div>
-          <div class="example__details">
-            <div class="example__code">m/d/yyyy h:mm am/pm</div>
-            <div class="example__example">12/30/2008 6:01 PM</div>
-          </div>
-        </button>
-        <button class="example" id="elapsed-time-stopwatch-example">
-          <div class="example__desc">Elapsed Time (stopwatch)</div>
-          <div class="example__details">
-            <div class="example__code">[h]:mm:ss</div>
-            <div class="example__example">15:46:38</div>
-          </div>
-        </button>
-        <h3 id="ex-text">Text</h3>
-        <button class="example" id="text-only-prefix-example">
-          <div class="example__desc">Text-only prefix</div>
-          <div class="example__details">
-            <div class="example__code">"Delivered in "@</div>
-            <div class="example__example">Delivered in 4 days</div>
-          </div>
-        </button>
-        <h3 id="ex-other">Other</h3>
-        <button class="example" id="scientific-notation-example">
-          <div class="example__desc">Scientific Notation</div>
-          <div class="example__details">
-            <div class="example__code">#0.0E+0</div>
-            <div class="example__example">1.23E+3</div>
-          </div>
-        </button>
-        <button class="example" id="degrees-farenheit-example">
-          <div class="example__desc">Degrees Farenheit (rounded)</div>
-          <div class="example__details">
-            <div class="example__code">0"°F"</div>
-            <div class="example__example">123°F</div>
-          </div>
-        </button>
-        <button class="example" id="degrees-celsius-example">
-          <div class="example__desc">Degrees Celsius (w/ decimal)</div>
-          <div class="example__details">
-            <div class="example__code">0.0#"°C"</div>
-            <div class="example__example">1.23°C</div>
-          </div>
-        </button>
-      </div>
-    </div>
-  </main>
-
-  <div class="takeover takeover--hidden" id="about-takeover">
-    <button class="takeover__close" aria-label="Close takeover">×</button>
-    <div class="takeover__content">
-      <h2>About</h2>
-      <p>This is a scratchpad for building custom formats for Microsoft Excel and Google Sheets.</p>
-      <p>It was made by me, <a href="https://bryanbraun.com">Bryan Braun</a> 👋.</p>
-      <p>The source code can be found <a href="https://gitlab.com/bryanbraun/custom-formats/">here on Gitlab</a>.</p>
-      <p class="takeover__small">Special thanks to the
-        <a href="https://github.com/SheetJS/ssf">SheetJS SSF</a> project, which powers the formatting engine.</p>
-    </div>
-  </div>
-
-  <div class="takeover takeover--hidden" id="issues-takeover">
-    <button class="takeover__close" aria-label="Close takeover">×</button>
-    <div class="takeover__content">
-      <h2>Issues</h2>
-      <p>The Custom Formats Builder is in beta. Here are some things it's currently missing:</p>
-      <ul>
-        <li>Support for
-          <a href="https://www.ablebits.com/office-addins-blog/2016/07/07/custom-excel-number-format/#Change-font-color">format colors</a>
-        </li>
-        <li>Support for
-          <a href="https://www.ablebits.com/office-addins-blog/2016/07/07/custom-excel-number-format/#Create-conditional-number">format conditions</a>
-        </li>
-        <li>Support for
-          <a href="https://www.ablebits.com/office-addins-blog/2016/07/07/custom-excel-number-format/#numbers-into-fractions">mixed or unreduced fractions</a>
-        </li>
-        <li>Support for
-          <a href="https://msdn.microsoft.com/en-us/library/cc233965.aspx">language codes (LCIDs)</a>
-        </li>
-        <li>Alignment symbols (like ? and *) don't affect the alignment of the formatted cell.</li>
-      </ul>
-      <p>If you find any other issues you can <a href="https://gitlab.com/bryanbraun/custom-formats/-/issues/new">log them here</a>.</p>
-    </div>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handsontable/0.35.1/handsontable.full.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/ssf@0.10.1/ssf.js"></script>
-  <script src="scripts/presets.js"></script>
-  <script src="scripts/info.js"></script>
-  <script src="scripts/main.js"></script>
-  <script src="scripts/outline.js"></script>
-</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handsontable/0.35.1/handsontable.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ssf@0.10.1/ssf.js"></script>
+    <script src="scripts/presets.js"></script>
+    <script src="scripts/info.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/outline.js"></script>
+  </body>
 
 </html>
